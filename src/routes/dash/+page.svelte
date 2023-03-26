@@ -1,4 +1,5 @@
 <script>
+	import Bookmark from '$lib/components/bookmark.svelte';
 	import { onMount } from 'svelte';
 	import db from '../db';
 	import { goto } from '$app/navigation';
@@ -20,9 +21,7 @@
 	<h2>Bookmarks</h2>
 	<div>
 		{#each bookmarks as bookmark}
-			<li>
-				{bookmark.url}
-			</li>
+			<Bookmark {bookmark} />
 		{/each}
 	</div>
 </div>

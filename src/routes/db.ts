@@ -1,5 +1,5 @@
-import { createClient } from '@supabase/supabase-js';
 import { writable } from 'svelte/store';
+import { createClient } from '@supabase/supabase-js';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_KEY, PUBLIC_BASE_URL } from '$env/static/public';
 
 export const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_KEY);
@@ -54,6 +54,15 @@ export default {
 			});
 
 			return data;
+		}
+	},
+	tts: {
+		async createTts(url) {
+			const { data, error } = await supabase.functions.invoke('hello-world', {
+				body: { name: 'satan' }
+			});
+			console.log(data);
+			console.log(error);
 		}
 	}
 };
