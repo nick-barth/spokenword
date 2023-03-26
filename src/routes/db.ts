@@ -56,13 +56,18 @@ export default {
 			return data;
 		}
 	},
-	tts: {
-		async createTts(url) {
-			const { data, error } = await supabase.functions.invoke('hello-world', {
-				body: { name: 'satan' }
+	parse: {
+		async parseUrl(url: string) {
+			const { data, error } = await supabase.functions.invoke('parse', {
+				body: { url }
 			});
+
 			console.log(data);
 			console.log(error);
 		}
 	}
 };
+curl --request POST 'http://localhost:43211/functions/v1/parse' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs' \
+  --header 'Content-Type: application/json' \
+  --data '{ "url":"https://blog.hireproof.io/big-twitch-energy-how-live-streaming-made-me-a-better-developer-ae61e09c8c48" }'

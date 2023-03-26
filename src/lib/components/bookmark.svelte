@@ -3,7 +3,7 @@
 	import db from '../../routes/db';
 
 	const handlePlay = () => {
-		db.tts.createTts('fuck');
+		db.parse.parseUrl(bookmark.url);
 	};
 </script>
 
