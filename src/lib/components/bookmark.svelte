@@ -3,7 +3,7 @@
 	import db from '../../routes/db';
 
 	const handlePlay = () => {
-		db.parse.parseUrl(bookmark.url);
+		db.parse.parseUrl(bookmark.url, bookmark.id);
 	};
 </script>
 
