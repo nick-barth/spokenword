@@ -17,7 +17,8 @@ serve(async (req) => {
 
 	try {
 		const { url, id } = await req.json();
-		const parserUrl = `https://parse.spokenword.app/parse?url=${url}`;
+		const parserAppUrl = Deno.env.get('PARSE_APP_URL');
+		const parserUrl = `${parserAppUrl}parse?url=${url}`;
 
 		const res = await fetch(parserUrl);
 		const parseData = await res.json();
