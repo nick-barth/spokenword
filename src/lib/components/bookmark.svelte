@@ -3,7 +3,8 @@
 	import db from '../../routes/db';
 
 	const handlePlay = () => {
-		db.parse.parseUrl(bookmark.url, bookmark.id);
+		db.tts.createTts(bookmark);
+		// db.parse.parseUrl(bookmark.url, bookmark.id);
 	};
 </script>
 

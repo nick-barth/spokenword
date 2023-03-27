@@ -61,9 +61,17 @@ export default {
 			const { data, error } = await supabase.functions.invoke('parse', {
 				body: { url, id }
 			});
-
-			console.log(data);
-			console.log(error);
+		}
+	},
+	tts: {
+		async createTts(bookmark) {
+			// remove these calls
+			const {
+				data: { user }
+			} = await supabase.auth.getUser();
+			const { data, error } = await supabase.functions.invoke('tts', {
+				body: { user_id: user.id, bookmark_id: bookmark.id, text: bookmark.text }
+			});
 		}
 	}
 };
